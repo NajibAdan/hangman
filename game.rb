@@ -69,7 +69,8 @@ class Game
             :player_name => @player_name,
             :mystery_word => @mystery_word,
             :misses => @misses,
-            :round => @round
+            :round => @round,
+            :word => @word
         })
 
         puts "Enter the name of your save file"
@@ -100,6 +101,7 @@ class Game
         @mystery_word = data[:mystery_word]
         @misses = data[:misses]
         @round = data[:round]
+        @word = data[:word]
     end
     def draw
         puts "\n_____________________________________"
@@ -113,8 +115,8 @@ end
 class Player
     attr_accessor :name, :guess_word
     def initialize
-        #puts "Enter your name"
-        #@name = gets.chomp.downcase
+        puts "Enter your name"
+        @name = gets.chomp.downcase
         @guess_word
     end
     def guess
