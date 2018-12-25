@@ -11,6 +11,7 @@ class Game
         @player_name = name
         @directory = './saved_games/'
     end
+
     def save_game_confirmation
         if @misses.length!= 5
             puts 'Do you want to save your game?'
@@ -112,37 +113,4 @@ class Game
     end
 end
 
-class Player
-    attr_accessor :name, :guess_word
-    def initialize
-        puts "Enter your name"
-        @name = gets.chomp.downcase
-        @guess_word
-    end
-    def guess
-        puts 'Guess a letter in the mystery word'
-        @guess_word = gets.chomp.downcase.strip
-        if @guess_word.match(/[^a-z]/)
-            puts 'ONLY LETTERS PLEASE'
-            guess
-        else
-            @guess_word = @guess_word
-        end
-    end
-end
 
-game = Game.new()
-player = Player.new()
-
-puts "DO YOU WANT TO LOAD A SAVE FILE"
-choice = gets.chomp.downcase
-if choice[0] == 'y'
-    game.load_game_confirmation
-else
-    game.choose_word
-end
-while !game.game_over? do
-    game.draw
-    game.guess = player.guess
-    game.check_letter
-end
